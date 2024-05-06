@@ -27,23 +27,27 @@ const students = [
   
 ];
 
+const renderToDom = (divId, htmlToRender) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = htmlToRender;
+};
+
+const targetingApp = document.querySelector ('#first-year');
+const allBtn = document.querySelector("#showAll");
+const greenBtn = document.querySelector("#green");
+const redBtn = document.querySelector("#red");
+const yellowBtn = document.querySelector("#yellow");
+const blueBtn = document.querySelector("#blue");
 
 
-  const targetingApp = document.querySelector('#first-year')
-  const greenBtn = document.getElementById("#green");
-  const redBtn = document.getElementById("#red");
-  const yellowBtn = document.getElementById("#yellow");
-  const blueBtn = document.getElementById("#blue");
 
+  let domString = "";
 
-
-
-  let domString = ""
   students.forEach(student => {
     domString+= `
-  <div class="card" style="width: 9rem; display: flex; margin: 10px; padding: 10px">
+  <div class="card" style="width: 9rem; display: flex; margin: 10px">
     <div class-header>
-    <h5 class="card-title">${student.name}</h5>
+    <h3 class="card-title">${student.name}</h3>
     </div>
     <div class="card-body">
       <p class="card-text">${student.house}</p>
@@ -52,24 +56,148 @@ const students = [
   </div>`;
   });
 
-targetingApp.innerHTML = domString;
+      targetingApp.innerHTML = domString;
+
+  
+
+      const showAllSlytherin = () => {
+        domString = ''
+        students.forEach((student) => {
+          if (student.house === "Slytherin") {
+          domString += `<div class="card" style="width: 9rem; display: flex; margin: 10px">
+          <div class-header>
+          <h3 class="card-title">${student.name}</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">${student.house}</p>
+            <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
+          </div>
+        </div>`;
+          }
+          targetingApp.innerHTML = domString;
+          
+        });
+      
+      }
 
 
 
 
-const showGreen = () => {
-  domString = ''
-  <div class="card" style="width: 9rem; display: flex; margin: 10px; padding: 10px">
-    <div class-header>
-    <h5 class="card-title">${student.name}</h5>
-    </div>
-    <div class="card-body">
-      <p class="card-text">${student.house}</p>
-      <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
-    </div>
-  </div>`;
+      const showAllGryffindor = () => {
+        domString = ''
+        students.forEach((student) => {
+          if (student.house === "Gryffindor") {
+          domString += `<div class="card" style="width: 9rem; display: flex; margin: 10px">
+          <div class-header>
+          <h3 class="card-title">${student.name}</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">${student.house}</p>
+            <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
+          </div>
+        </div>`;
+          }
+          targetingApp.innerHTML = domString;
+          
+        });
+      
+      } 
+
+
+
+      const showAllHufflepuff = () => {
+        domString = ''
+        students.forEach((student) => {
+          if (student.house === "Hufflepuff") {
+          domString += `<div class="card" style="width: 9rem; display: flex; margin: 10px">
+          <div class-header>
+          <h3 class="card-title">${student.name}</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">${student.house}</p>
+            <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
+          </div>
+        </div>`;
+          }
+          targetingApp.innerHTML = domString;
+          
+        });
+      
+      }
+
+
+
+
+
+      const showAllRavenclaw = () => {
+        domString = ''
+        students.forEach((student) => {
+          if (student.house === "Ravenclaw") {
+          domString += `<div class="card" style="width: 9rem; display: flex; margin: 10px">
+          <div class-header>
+          <h3 class="card-title">${student.name}</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">${student.house}</p>
+            <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
+          </div>
+        </div>`;
+          }
+          targetingApp.innerHTML = domString;
+          
+        });
+      
+      }
+
+
+
+      const showAll = () => {
+      students.forEach(student => {
+        domString+= `
+      <div class="card" style="width: 9rem; display: flex; margin: 10px">
+        <div class-header>
+        <h3 class="card-title">${student.name}</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">${student.house}</p>
+          <button class="btn btn-danger" id="delete--${student.id}">Expel</button>
+        </div>
+      </div>`;
+      })
+    
+          targetingApp.innerHTML = domString;
     }
-    
-    targetingApp.innerHTML = domString;
-    
-  });
+
+
+
+
+
+    const form = document.querySelector('form')
+
+
+      const createStudent = (e) => {
+        domString = ""
+        e.preventDefault();
+        const newStudent =  {
+          id: students.length + 1,
+          name: document.getElementById("studentName").value,
+
+        }
+        students.push(newStudent)
+        showAll()
+        form.reset()
+      }
+      form.addEventListener("submit", createStudent)
+
+
+
+
+
+
+
+
+ allBtn.addEventListener("click", showAll)
+greenBtn.addEventListener("click", showAllSlytherin)
+redBtn.addEventListener("click", showAllGryffindor)
+yellowBtn.addEventListener("click", showAllHufflepuff)
+blueBtn.addEventListener("click", showAllRavenclaw)
