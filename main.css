@@ -1,0 +1,64 @@
+body {
+
+    background-image: url(https://cdnb.artstation.com/p/assets/images/images/024/794/705/large/nicolas-ruffault-vr-studio-04.jpg?1583553794);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.header {
+  text-color: black;
+
+  text-align: center;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.student-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.btn-container {
+  text-align: center;
+  margin: 10px;
+}
+
+
+#students {
+background-color: transparent;
+width: 100%;
+
+}
+
+  
+
+#first-year {
+  background-color: white;
+  width: 50%;
+  margin: 10px;
+  padding: 20px;
+  display: inline-flexbox;
+}
+
+#expelled {
+  background-color: rgb(62, 61, 61);
+  width: 40%;
+  margin: 10px;
+}
+
+.card {
+  display: flex;
+  text-align: center;
+  width: 50%;
+  justify-content: center;
+}
